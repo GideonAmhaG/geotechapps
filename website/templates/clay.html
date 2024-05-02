@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% block title %}Inputs{% endblock %}
+{% block header %}Inputs{% endblock %}
+{% block content %}
+<div class="row">
+	<div class="col">
+		<form action="/clay_soil_results" method="post">
+			<div class="row">
+				<div class="col">
+					<div class="col">
+						<label for="DL">Permanent load (Unfactored), Gk (kN)</label>
+						<input class="form-control" type="text" name="DL" id="DL" placeholder="Permanent load (Unfactored), Gk (kN)">
+					</div>
+					<div class="col">
+						<label for="LL">Variable load (Unfactored), Qk (kN)</label>
+						<input class="form-control" type="text" name="LL" id="LL" placeholder="Variabe load (Unfactored), Qk (kN)">
+					</div>
+					<div class="col">
+						<label for="mxp">MomentX Permanent (Unfactored), Mxp (kNm)</label>
+						<input class="form-control" type="text" name="mxp" id="mxp" placeholder="MomentX Permanent (Unfactored), Mxp (kNm)">
+					</div>
+					<div class="col">
+						<label for="mxv">MomentX Variable (Unfactored), Mxv (kNm)</label>
+						<input class="form-control" type="text" name="mxv" id="mxv" placeholder="MomentX Variable (Unfactored), Mxv (kNm)">
+					</div>
+					<div class="col">
+						<label for="myp">MomentY Permanent (Unfactored), Myp (kNm)</label>
+						<input class="form-control" type="text" name="myp" id="myp" placeholder="MomentY Permanent (Unfactored), Myp (kNm)">
+					</div>
+					<div class="col">
+						<label for="myv">MomentY Variable (Unfactored), Myv (kNm)</label>
+						<input class="form-control" type="text" name="myv" id="myv" placeholder="MomentY Variable (Unfactored), Myv (kNm)">
+					</div>
+					<div class="col">
+						<label for="COL">Column widthX (m)</label>
+						<input class="form-control" type="text" name="COL" id="COL" placeholder="Column widthX (m)">
+					</div>
+					<div class="col">
+						<label for="COLY">Column widthY (m)</label>
+						<input class="form-control" type="text" name="COLY" id="COLY" placeholder="Column widthY (m)">
+					</div>
+				</div>
+				<div class="col">
+					<div class="col">
+						<label for="CU">Undrained cohesion, cu (kPa)</label>
+						<input class="form-control" type="text" name="CU" id="CU" placeholder="Undrained cohesion, cu (kPa)">
+					</div>
+					<div class="col">
+						<label for="DF">Depth of foundation, Df (m)</label>
+						<input class="form-control" type="text" name="DF" id="DF" placeholder="Depth of foundation, Df (m)">
+					</div>
+					<div class="col">
+						<label for="GAM">Unit weight of soil, &gamma; (kN/m<sup>3</sup>)</label>
+						<input class="form-control" type="text" name="GAM" id="GAM" placeholder="Unit weight of soil, &gamma; (kN/m^3)">
+					</div>
+					<div class="col">
+						<label for="FCK">Concrete strength, fck (MPa)</label>
+						<input class="form-control" type="text" name="FCK" id="FCK" placeholder="Concrete strength, fck (MPa)">
+					</div>
+					<div class="col">
+						<label for="FYK">Steel strength, fyk (MPa)</label>
+						<input class="form-control" type="text" name="FYK" id="FYK" placeholder="Steel strength, fyk (MPa)">
+					</div>
+					<div class="col">
+						<label for="BAR">Re-Bar diameter (mm)</label>
+						<input class="form-control" type="text" name="BAR" id="BAR" placeholder="Re-Bar diameter (mm)">
+					</div>
+					<br>
+					<div class="col">
+						<label for="COV">Cover - </label>
+							<select class="form-select" id="COV" name="COV">
+							    <option value="40">40 mm (Footing on lean concrete)</option>
+							    <option value="75">75 mm (Footing on soil)</option>
+							</select>
+					</div>
+				</div>
+			</div>	
+			<div class="row pt-4">
+				<div class="col">
+					<div class="row justify-content-end">
+						<button type="submit" name="submit_type" value="regular" class="btn btn-success">Calculate-Regular</button>
+					</div>
+				</div>
+				<div class="col">
+					<button type="submit" name="submit_type" value="advanced" class="btn btn-warning">Calculate-Advanced</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+{% endblock %}

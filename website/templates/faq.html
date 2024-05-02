@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}FAQ{% endblock %}
+{% block header %}FAQ{% endblock %}
+{% block content %}
+<p>These are the answers to some of the most commonly asked questions:</p>
+<ul>
+	<li><p class="text-danger">Use at your own discretion. The web tool is still in its development phase. Though the results are accurate, we will not take any responsibility for issues that may arise from using this web tool for design.</p></li>
+	<li><p>The design code used is Eurocode and the results obtained apply to other codes that originate from Eurocode, such as EBCS-2015.</p></li>
+	<li><p>The allowable/permissible design approach (as per Eurocode) is used with a factor of safety of 3 to account for settlement requirements.</p></li>
+	<li><p>Terzaghi's bearing capacity equations and factors are used.</p></li>
+	<li><p>Acceptable inputs:</p></li>
+	<ul>
+		<li><p>Permanent load (Unfactored), Gk (kN): 200 - 4100</p></li>
+		<li><p>Variable load (Unfactored), Qk (kN): 130 - 2100</p></li>
+		<li><p>All moments (Unfactored), M (kNm): -1000 - 1000</p></li>
+		<li><p>Column size, smaller side (m): 0.1 - 1.5</p></li>
+		<li><p>Undrained cohesion, cu (kPa): 1 - 1000</p></li>
+		<li><p>Angle of friction of soil, &phi; (Degrees): 1 - 70</p></li>
+		<li><p>Allowable bearing capacity, qall (kPa): 50 - 1000</p></li>
+		<li><p>Depth of foundation, Df (m): 0.1 - 10</p></li>
+		<li><p>Unit weight of soil, &gamma; (kN/m<sup>3</sup>): 1.1 - 30</p></li>
+		<li><p>Concrete strength, fck (MPa): 25 - 100</p></li>
+		<li><p>Steel strength, fyk (MPa): 100 - 1000</p></li>
+		<li><p>Re-Bar diameter (mm): 12 - 32</p></li>
+	</ul>
+	<li><p>Inputting unrealistically large or small numbers (different from the ones mentioned above) results in the message "You have entered impractical inputs."</p></li>
+	<li><p>Advanced calculations give more comprehensive results.</p></li>
+	<li><p>The effects of groundwater are neglected. Use for cases where groundwater has no effect on the foundation.</p></li>
+</ul>
+{% endblock %}

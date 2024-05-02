@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Select soil type{% endblock %}
+{% block header %}Select soil type{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+	<div class="col">
+	  	<form method="post">
+			<div class="form-check">
+		  		<input class="form-check-input" type="radio" name="option" value="clay" checked>
+		  		<label class="form-check-label" for="clay">Clay-soil/Short-term/Undrained</label>
+			</div>
+			<div class="form-check">
+		  		<input class="form-check-input" type="radio" name="option" value="sand">
+		  		<label class="form-check-label" for="sand">Sand-soil/Long-term/Drained</label>
+			</div>
+			<div class="form-check">
+		  		<input class="form-check-input" type="radio" name="option" value="bearing_c">
+		  		<label class="form-check-label" for="bearing_c">I will provide my own bearing capacity</label>
+			</div>
+			<div class="row justify-content-center pt-4">
+		  		<input class="btn btn-success" type="submit" value="Choose">
+			</div>
+	  	</form>
+	</div>
+</div>
+{% endblock %}

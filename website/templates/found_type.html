@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Select foundation type{% endblock %}
+{% block header %}Select foundation type{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+	<div class="col">
+	  	<form method="post">
+			<div class="form-check form-check-inline">
+		  		<input class="form-check-input" type="radio" name="option" value="iso_square" checked>
+		  		<label class="form-check-label" for="iso_square">Isolated footing (centrically located column)</label>
+			</div>
+			<div class="row justify-content-center pt-4">
+		  		<input class="btn btn-success" type="submit" value="Choose">
+			</div>
+	  	</form>
+	</div>
+</div>
+{% endblock %}
