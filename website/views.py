@@ -30,6 +30,16 @@ def faq():
     """ for FAQ page """
     return render_template('faq.html', user=current_user)
 
+@views.route('/privacy-policy')
+def privacy_policy():
+    """ for privacy-policy page """
+    return render_template('privacy_policy.html', user=current_user)
+
+@views.route('/contact-us')
+def contact_us():
+    """ for contact-us page """
+    return render_template('contact_us.html', user=current_user)
+
 
 @views.route('/found_type', methods=['GET', 'POST'])
 def found_type():
