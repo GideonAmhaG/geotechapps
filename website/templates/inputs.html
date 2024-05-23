@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+{% block title %}Inputs{% endblock %}
+{% block header %}Inputs{% endblock %}
+{% block content %}
+<form action="/inputs" method="post" id="foundation-form">
+    <div class="row">
+        <div class="col">
+            <!-- <h4>Soil Type: <span id="selected-soil"></span></h4> -->
+            <h4>Soil Type: {{ soil_type }}</span></h4>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col">
+            <h4>Loads and Moments:</h4>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="DL">Permanent load (Unfactored), Gk (kN)</label>
+                    <input class="form-control" type="text" name="DL" id="DL"
+                        placeholder="Permanent load (Unfactored), Gk (kN)">
+                </div>
+                <div class="col-md-6">
+                    <label for="LL">Variable load (Unfactored), Qk (kN)</label>
+                    <input class="form-control" type="text" name="LL" id="LL"
+                        placeholder="Variabe load (Unfactored), Qk (kN)">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="mxp">MomentX Permanent (Unfactored), Mxp (kNm)</label>
+                    <input class="form-control" type="text" name="mxp" id="mxp"
+                        placeholder="MomentX permanent (Unfactored), Mxp (kNm)">
+                </div>
+                <div class="col-md-6">
+                    <label for="mxv">MomentX Variable (Unfactored), Mxv (kNm)</label>
+                    <input class="form-control" type="text" name="mxv" id="mxv"
+                        placeholder="MomentX variable (Unfactored), Mxv (kNm)">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="myp">MomentY Permanent (Unfactored), Myp (kNm)</label>
+                    <input class="form-control" type="text" name="myp" id="myp"
+                        placeholder="MomentY permanent (Unfactored), Myp (kNm)">
+                </div>
+                <div class="col-md-6">
+                    <label for="myv">MomentY Variable (Unfactored), Myv (kNm)</label>
+                    <input class="form-control" type="text" name="myv" id="myv"
+                        placeholder="MomentY variable (Unfactored), Myv (kNm)">
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col">
+            <h4>Geometry:</h4>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="COL">Column widthX (m)</label>
+                    <input class="form-control" type="text" name="COL" id="COL" placeholder="Column widthX (m)">
+                </div>
+                <div class="col-md-6">
+                    <label for="COLY">Column widthY (m)</label>
+                    <input class="form-control" type="text" name="COLY" id="COLY" placeholder="Column widthY (m)">
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col">
+            <h4>Soil Property:</h4>
+            <div class="row">
+                <div class="col-md-6 bearing-c">
+                    <label for="BC">Allowable bearing capacity, qall (kPa)</label>
+                    <input class="form-control" type="text" name="BC" id="BC"
+                        placeholder="Allowable bearing capacity, qall (kPa)">
+                </div>
+                <div class="col-md-6 clay-sand">
+                    <label for="DF">Depth of foundation, Df (m)</label>
+                    <input class="form-control" type="text" name="DF" id="DF" placeholder="Depth of foundation, Df (m)">
+                </div>
+                <div class="col-md-6 clay">
+                    <label for="CU">Undrained cohesion, Cu (kPa)</label>
+                    <input class="form-control" type="text" name="CU" id="CU"
+                        placeholder="Undrained cohesion, Cu (kPa)">
+                </div>
+                <div class="col-md-6 sand">
+                    <label for="PHI">Angle of internal friction, PHI (degrees)</label>
+                    <input class="form-control" type="text" name="PHI" id="PHI"
+                        placeholder="Angle of internal friction, PHI (degrees)">
+                </div>
+                <div class="col-md-6 clay-sand">
+                    <label for="GAM">Unit weight of soil, &gamma; (kN/m<sup>3</sup>)</label>
+                    <input class="form-control" type="text" name="GAM" id="GAM"
+                        placeholder="Unit weight of soil, &gamma; (kN/m^3)">
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col">
+            <h4>Material Property:</h4>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="FCK">Concrete strength, fck (MPa)</label>
+                    <input class="form-control" type="text" name="FCK" id="FCK"
+                        placeholder="Concrete strength, fck (MPa)">
+                </div>
+                <div class="col-md-6">
+                    <label for="FYK">Steel strength, fyk (MPa)</label>
+                    <input class="form-control" type="text" name="FYK" id="FYK" placeholder="Steel strength, fyk (MPa)">
+                </div>
+                <div class="col-md-6">
+                    <label for="BAR">Re-Bar diameter (mm)</label>
+                    <input class="form-control" type="text" name="BAR" id="BAR" placeholder="Re-Bar diameter (mm)">
+                </div>
+                <div class="col mt-4">
+                    <label for="COV">Cover - </label>
+                    <select class="form-select" id="COV" name="COV">
+                        <option value="40">40 mm (Footing on lean concrete)</option>
+                        <option value="75">75 mm (Footing on soil)</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row pt-4">
+        <div class="col">
+            <div class="row justify-content-end">
+                <button type="submit" name="submit_type" value="regular"
+                    class="btn btn-success">Calculate-Regular</button>
+            </div>
+        </div>
+        <div class="col">
+            <button type="submit" name="submit_type" value="advanced"
+                class="btn btn-warning">Calculate-Advanced</button>
+        </div>
+    </div>
+    <input type="hidden" name="option" value="{{ soil_type }}">
+</form>
+{% endblock %}
+{% block javascript %}
+<script type="text/javascript" src="{{ url_for('static', filename='js/inputs.js') }}"></script>
+<script>
+    var soilType = "{{ soil_type }}"; // Store the value from Flask
+    // document.getElementById("selected-soil").innerHTML = formatSoilType(soilType);
+    updateSoilFields(soilType); // Pass the variable to the function
+</script>
+{% endblock %}

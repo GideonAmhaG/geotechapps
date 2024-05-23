@@ -4,302 +4,325 @@
 {% block content %}
 <div class="col">
 	<div class="col">
-		<h4>Numerical</h4>
 		{% if text %}
-			<p class="text-danger">{{ text }} have entered impractical inputs.
-				Read FAQ - Acceptable inputs section for a range of acceptable values.</p>
+		<p class="text-danger">{{ text }} have entered impractical inputs.
+			Read FAQ - Acceptable inputs section for a range of acceptable values.</p>
 		{% endif %}
-		{% if b %}
-			<p>Length of side, B (both sides) = {{ b }} m</p>
+		{% if results.b %}
+		<h4>Numerical</h4>
+		<p>Length of side, B (both sides) = {{ results.b }} m</p>
 		{% endif %}
-		{% if d %}
-			<p>Thickness, D = {{ d }} m</p>
+		{% if results.d %}
+		<p>Thickness, D = {{ results.d }} m</p>
 		{% endif %}
-		{% if N %}
-			<p>Number of bars, N (both sides, bottom) = {{ N }}</p>
+		{% if results.N %}
+		<p>Number of bars, N (both sides, bottom) = {{ results.N }}</p>
 		{% endif %}
-		{% if s %}
-			<p>Spacing between bars, S (both sides, bottom) = {{ s }} mm</p>
+		{% if results.s %}
+		<p>Spacing between bars, S (both sides, bottom) = {{ results.s }} mm</p>
 		{% endif %}
-		{% if b %}
-			<div class="d-flex justify-content-center">
-				<button id="open-window-button" type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#windowModal">Generate Design Report</button>
-			</div>
-			<div class="modal fade" id="windowModal" tabindex="-1" aria-labelledby="windowModalLabel" aria-hidden="true">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h4 class="modal-title" id="windowModalLabel">Design Report</h4>
-							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-						</div>
-						<div class="modal-body">
-							<div>
-								<div class="jumbotron text-center">
-									<h1>1. Proportioning</h1>
+		{% if results.b %}
+		<div class="d-flex justify-content-center">
+			<button id="open-window-button" type="button" class="btn btn-info" data-bs-toggle="modal"
+				data-bs-target="#windowModal">Generate Design Report</button>
+		</div>
+		<div class="modal fade" id="windowModal" tabindex="-1" aria-labelledby="windowModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title" id="windowModalLabel">Design Report</h4>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<div>
+							<div class="jumbotron text-center">
+								<h1>1. Proportioning</h1>
+							</div>
+							<div class="text-center">
+								<div class="jumbotron text-center font-weight-bold">
+									<h6>Footing stress, &sigma;<sub>max</sub> ≤ Allowable bearing capacity, qall</h6>
 								</div>
-								<div class="text-center">
-									<div class="jumbotron text-center font-weight-bold">
-										<h6>Footing stress, &sigma;<sub>max</sub> ≤ Allowable bearing capacity, qall</h6>
-									</div>
-									<div class="container">
-										<div class="row justify-content-center">
-											<div class="col-md-12">
-												<div class="card bg-light text-center p-3">
-													<math>
-														<mrow>
-															<mi>&sigma;</mi><msub><mi><sub>max</sub></mi></msub><mo>=</mo><mfrac>
-																<mi>P</mi><mi>A</mi></mfrac>
-																<mo>(</mo><mn>1</mn><mo>+</mo><mfrac><mn>6 * e_x</mn>
-																<mi>B</mi></mfrac><mo>+</mo><mfrac><mn>6 * e_y</mn><mi>L</mi>
-																</mfrac><mo>)</mo>
-														</mrow>
-													</math>
-													{% if cu %}
-														<br>
-														<p>qu = (1.3 * cu * 5.7) + (&#947; * Df)</p>
-													{% endif %}
-													{% if phi %}
-														<br>
-													 	<p>qu = (&#947; * Df * Nq) + (0.4 * B * &#947; * N&#947;)</p>
-														<p>Nq = e<sup>(((270 - φ) / 180) * π * tan(φ_r))</sup> / (2 * cos<sup>2</sup>(rad(45 + φ/2)))</p>
-														<p>N&#947; = (2 * (Nq + 1) * tan(φ_r)) / (1 + (0.4 * sin(rad(4 * φ))))</p>													
-													{% endif %}
-													{% if cu or phi %}
-														<p>qall = qu / FS</p>
-													{% endif %}
-												</div>
+								<div class="container">
+									<div class="row justify-content-center">
+										<div class="col-md-12">
+											<div class="card bg-light text-center p-3">
+												<math>
+													<mrow>
+														<mi>&sigma;</mi>
+														<msub>
+															<mi><sub>max</sub></mi>
+														</msub>
+														<mo>=</mo>
+														<mfrac>
+															<mi>P</mi>
+															<mi>A</mi>
+														</mfrac>
+														<mo>(</mo>
+														<mn>1</mn>
+														<mo>+</mo>
+														<mfrac>
+															<mn>6 * e_x</mn>
+															<mi>B</mi>
+														</mfrac>
+														<mo>+</mo>
+														<mfrac>
+															<mn>6 * e_y</mn>
+															<mi>L</mi>
+														</mfrac>
+														<mo>)</mo>
+													</mrow>
+												</math>
+												{% if cu %}
+												<br>
+												<p>qu = (1.3 * cu * 5.7) + (&#947; * Df)</p>
+												{% endif %}
+												{% if phi %}
+												<br>
+												<p>qu = (&#947; * Df * Nq) + (0.4 * B * &#947; * N&#947;)</p>
+												<p>Nq = e<sup>(((270 - φ) / 180) * π * tan(φ_r))</sup> / (2 *
+													cos<sup>2</sup>(rad(45 + φ/2)))</p>
+												<p>N&#947; = (2 * (Nq + 1) * tan(φ_r)) / (1 + (0.4 * sin(rad(4 * φ))))
+												</p>
+												{% endif %}
+												{% if cu or phi %}
+												<p>qall = qu / FS</p>
+												{% endif %}
 											</div>
 										</div>
 									</div>
 								</div>
-								<br>
-								<div class="container">
-									<div class="row justify-content-center">
-										<div class="col-md-9">
-											<div class="card bg-light text-center p-3">
-												<canvas id="rectangleCanvas"></canvas>
-												<script type="text/javascript" src="{{ url_for('static', filename='drawReport.js') }}"></script>
-										  	</div>
+							</div>
+							<br>
+							<div class="container">
+								<div class="row justify-content-center">
+									<div class="col-md-9">
+										<div class="card bg-light text-center p-3">
+											<canvas id="rectangleCanvas"></canvas>
 										</div>
 									</div>
 								</div>
-								<br>
+							</div>
+							<br>
+							<div class="row justify-content-center">
+								<div class="col-md-12">
+									<div class="card bg-light p-2">
+										<div class="list-group">
+											<li class="list-group-item">Footing thickness = {{ results.D_final|round(2)
+												}} m
+											</li>
+											<li class="list-group-item">Unit weight of concrete = 24 kN/m<sup>3</sup>
+											</li>
+											<li class="list-group-item">Self weight of footing = {{
+												results.SW_conc|round(2) }}
+												kN</li>
+											<li class="list-group-item">Self weight of fill = {{ results.SW_fill }} kN
+											</li>
+											<li class="list-group-item">Gk = {{ inputs.dl|round(2) }} kN</li>
+											<li class="list-group-item">Qk = {{ inputs.ll|round(2) }} kN</li>
+											<li class="list-group-item">P = 1(Gk + Self Weight) + 1Qk = {{ (inputs.dl +
+												results.SW_conc
+												+ results.SW_fill + inputs.ll)|round(2) }} kN</li>
+											<li class="list-group-item">B = L = {{ results.B_final|round(2) }} m</li>
+											<li class="list-group-item">A = B * L = {{ (results.B_final *
+												results.B_final)|round(2) }}
+												m<sup>2</sup></li>
+											<li class="list-group-item">Mx = 1Mxp + 1Mxv = {{ inputs.mxp + inputs.mxv }}
+												kNm</li>
+											<li class="list-group-item">My = 1Myp + 1Myv = {{ inputs.myp + inputs.myv }}
+												kNm</li>
+											<li class="list-group-item">e_x = abs(My / P) = {{ results.ex|round(4) }} m
+											</li>
+											<li class="list-group-item">e_y = abs(Mx / P) = {{ results.ey|round(4) }} m
+											</li>
+											{% if inputs.cu %}
+											<li class="list-group-item">cu = {{ inputs.cu|round(2) }} kPa</li>
+											{% endif %}
+											{% if inputs.phi %}
+											<li class="list-group-item">φ = {{ inputs.phi|round(2) }}&deg;</li>
+											<li class="list-group-item">φ_r = {{ (inputs.phi * 3.14159 / 180)|round(2) }}</li>
+											<li class="list-group-item">Nq = {{ results.Nq|round(2) }}</li>
+											<li class="list-group-item">N&#947; = {{ results.Ngamma|round(2) }}</li>
+											{% endif %}
+											{% if results.qa %}
+											<li class="list-group-item">&#947; = {{ inputs.gam|round(2) }} kN/m<sup>3</sup>
+											</li>
+											<li class="list-group-item">Df = {{ inputs.df|round(2) }} m</li>
+											<li class="list-group-item">qu = {{ results.qu|round(2) }} kPa</li>
+											<li class="list-group-item">FS = {{ results.fs }}</li>
+											{% endif %}
+											<li class="list-group-item bg-success">&sigma;<sub>max</sub> = {{
+												results.sig_p|round(2) }} kPa</li>
+											{% if inputs.bc %}
+											<li class="list-group-item bg-success">qall = {{ inputs.bc|round(2) }} kPa</li>
+											{% endif %}
+											{% if results.qa %}
+											<li class="list-group-item bg-success">qall = {{ results.qa|round(2) }} kPa</li>
+											{% endif %}
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<hr>
+						<hr>
+						<div>
+							<div class="jumbotron text-center">
+								<h1>2. Structural Design</h1>
+							</div>
+							<div class="row justify-content-center">
+								<div class="col-md-8">
+									<div class="card bg-light p-2">
+										<div class="list-group">
+											<li class="list-group-item">P = 1.35Gk + 1.5Qk = {{ results.p_s|round(2) }} kN</li>
+											<li class="list-group-item">&sigma; = {{ results.sig_s|round(2) }} kPa</li>
+											<li class="list-group-item">fck = {{ inputs.fck }} MPa</li>
+											<li class="list-group-item">fyk = {{ inputs.fyk }} MPa</li>
+										</div>
+									</div>
+								</div>
+							</div>
+							<br>
+							<h4>2.1 Shear Failure</h4>
+							<div class="text-center">
+								<div class="jumbotron text-center font-weight-bold">
+									<h6>Action, v<sub>Ed</sub> ≤ Resistance, v<sub>Rd</sub></h6>
+								</div>
+								<div class="container">
+									<div class="row justify-content-center">
+										<div class="col-md-10">
+											<div class="card bg-light text-center p-3">
+												<p>v<sub>Ed</sub> = (&sigma; * Ap) / As</p>
+												<p>v<sub>Rd</sub> = max(v<sub>Rd</sub>, v<sub>Rd,min</sub>)</p>
+												<p>v<sub>Rd</sub> = 0.12 * k * (100 * &#961; * fck)<sup>1/3</p>
+												<p>v<sub>Rd,min</sub> = 0.035 * k<sup>1.5</sup> * fck<sup>0.5</sup></p>
+												<p>k = min(1 + (0.2 / d)<sup>0.5</sup>, 2)</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<br>
+							<div class="text-center">
+								<h5>Punching shear (2d from column face)</h5>
+							</div>
+							<div class="container">
 								<div class="row justify-content-center">
 									<div class="col-md-12">
 										<div class="card bg-light p-2">
-											<div class="list-group">
-												<li class="list-group-item">Footing thickness = {{ D_final|round(2) }} m</li>
-												<li class="list-group-item">Unit weight of concrete = 24 kN/m<sup>3</sup></li>
-												<li class="list-group-item">Self weight of footing = {{ SW_conc|round(2) }} kN</li>
-												<li class="list-group-item">Self weight of fill = {{ SW_fill }} kN</li>
-												<li class="list-group-item">Gk = {{ dl|round(2) }} kN</li>
-												<li class="list-group-item">Qk = {{ ll|round(2) }} kN</li>
-												<li class="list-group-item">P = 1(Gk + Self Weight) + 1Qk = {{ (dl + SW_conc + SW_fill + ll)|round(2) }} kN</li>
-												<li class="list-group-item">B = L = {{ B_final|round(2) }} m</li>
-												<li class="list-group-item">A = B * L = {{ (B_final * B_final)|round(2) }} m<sup>2</sup></li>
-												<li class="list-group-item">Mx = 1Mxp + 1Mxv = {{ mxp + mxv }} kNm</li>
-												<li class="list-group-item">My = 1Myp + 1Myv = {{ myp + myv }} kNm</li>
-												<li class="list-group-item">e_x = abs(My / P) = {{ ex|round(4) }} m</li>
-												<li class="list-group-item">e_y = abs(Mx / P) = {{ ey|round(4) }} m</li>
-												{% if cu %}
-													<li class="list-group-item">cu = {{ cu|round(2) }} kPa</li>
-												{% endif %}
-												{% if phi %}
-													<li class="list-group-item">φ = {{ phi|round(2) }}&deg;</li>
-													<li class="list-group-item">φ_r = {{ (phi * 3.14159 / 180)|round(2) }}</li>
-													<li class="list-group-item">Nq = {{ Nq|round(2) }}</li>
-													<li class="list-group-item">N&#947; = {{ Ngamma|round(2) }}</li>
-												{% endif %}
-												{% if qa %}
-													<li class="list-group-item">&#947; = {{ gam|round(2) }} kN/m<sup>3</sup></li>
-													<li class="list-group-item">Df = {{ df|round(2) }} m</li>
-													<li class="list-group-item">qu = {{ qu|round(2) }} kPa</li>
-													<li class="list-group-item">FS = {{ fs }}</li>
-												{% endif %}
-												<li class="list-group-item bg-success">&sigma;<sub>max</sub> = {{ sig_p|round(2) }} kPa</li>
-												{% if bc %}
-													<li class="list-group-item bg-success">qall = {{ bc|round(2) }} kPa</li>
-												{% endif %}
-												{% if qa %}
-													<li class="list-group-item bg-success">qall = {{ qa|round(2) }} kPa</li>
-												{% endif %}
+											<div class="row">
+												<div class="col-md-6 pr-1">
+													<ul class="list-group">
+														<li class="list-group-item">d = {{ results.d_punch|round(2) }} m</li>
+														<li class="list-group-item">k = {{ results.k_punch|round(2) }}</li>
+														<li class="list-group-item">&#961; = {{ results.rho_final|round(4) }}
+														</li>
+														<li class="list-group-item">As = {{ results.As_punch|round(2) }}
+															m<sup>2</sup></li>
+														<li class="list-group-item">Ap = {{ results.Ap2_punch|round(2) }}
+															m<sup>2</sup></li>
+													</ul>
+												</div>
+												<div class="col-md-6 pl-1">
+													<ul class="list-group">
+														<li class="list-group-item">v<sub>Rd,min</sub> = {{
+															results.vrd_min_punch|round(2) }} kPa</li>
+														<li class="list-group-item bg-success">v<sub>Ed</sub> = {{
+															results.ved_punch|round(2) }} kPa</li>
+														<li class="list-group-item bg-success">v<sub>Rd</sub> = {{
+															results.vrd_punch|round(2) }} kPa</li>
+														<li class="list-group-item">D = {{ results.D_punch|round(2) }} m</li>
+													</ul>
+												</div>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-							<hr>
-							<hr>
-							<div>
-								<div class="jumbotron text-center">
-									<h1>2. Structural Design</h1>
-								</div>
+							<br>
+							<div class="text-center">
+								<h5>Vertical/Wide beam shear (d from column face)</h5>
+							</div>
+							<div class="container">
 								<div class="row justify-content-center">
-									<div class="col-md-8">
+									<div class="col-md-12">
 										<div class="card bg-light p-2">
-											<div class="list-group">
-												<li class="list-group-item">P = 1.35Gk + 1.5Qk = {{ p_s|round(2) }} kN</li>
-												<li class="list-group-item">&sigma; = {{ sig_s|round(2) }} kPa</li>
-												<li class="list-group-item">fck = {{ fck }} MPa</li>
-												<li class="list-group-item">fyk = {{ fyk }} MPa</li>
-											</div>
-										</div>
-									</div>
-								</div>
-								<br>
-								<h4>2.1 Shear Failure</h4>
-								<div class="text-center">
-									<div class="jumbotron text-center font-weight-bold">
-										<h6>Action, v<sub>Ed</sub> ≤ Resistance, v<sub>Rd</sub></h6>
-									</div>
-									<div class="container">
-										<div class="row justify-content-center">
-											<div class="col-md-10">
-												<div class="card bg-light text-center p-3">
-													<p>v<sub>Ed</sub> = (&sigma; * Ap) / As</p>
-													<p>v<sub>Rd</sub> = max(v<sub>Rd</sub>, v<sub>Rd,min</sub>)</p>
-													<p>v<sub>Rd</sub> = 0.12 * k * (100 * &#961; * fck)<sup>1/3</p>
-													<p>v<sub>Rd,min</sub> = 0.035 * k<sup>1.5</sup> * fck<sup>0.5</sup></p>
-													<p>k = min(1 + (0.2 / d)<sup>0.5</sup>, 2)</p>
+											<div class="row">
+												<div class="col-md-6 pr-1">
+													<ul class="list-group">
+														<li class="list-group-item">d = {{ results.d_wide|round(2) }} m</li>
+														<li class="list-group-item">k = {{ results.k_wide|round(2) }}</li>
+														<li class="list-group-item">&#961; = {{ results.rho_final|round(4) }}
+														</li>
+														<li class="list-group-item">As = {{ results.As_wide|round(2) }}
+															m<sup>2</sup></li>
+														<li class="list-group-item">Ap = {{ results.Ap2_wide|round(2) }}
+															m<sup>2</sup></li>
+													</ul>
 												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<br>
-								<div class="text-center">
-									<h5>Punching shear (2d from column face)</h5>
-								</div>
-								<div class="container">
-									<div class="row justify-content-center">
-										<div class="col-md-12">
-											<div class="card bg-light p-2">
-												<div class="row">
-													<div class="col-md-6 pr-1">
-														<ul class="list-group">
-															<li class="list-group-item">d = {{ d_punch|round(2) }} m</li>
-															<li class="list-group-item">k = {{ k_punch|round(2) }}</li>
-															<li class="list-group-item">&#961; = {{ rho_final|round(4) }}</li>
-															<li class="list-group-item">As = {{ As_punch|round(2) }} m<sup>2</sup></li>
-															<li class="list-group-item">Ap = {{ Ap2_punch|round(2) }} m<sup>2</sup></li>
-														</ul>
-													</div>
-													<div class="col-md-6 pl-1">
-														<ul class="list-group">
-															<li class="list-group-item">v<sub>Rd,min</sub> = {{ vrd_min_punch|round(2) }} kPa</li>
-															<li class="list-group-item bg-success">v<sub>Ed</sub> = {{ ved_punch|round(2) }} kPa</li>
-															<li class="list-group-item bg-success">v<sub>Rd</sub> = {{ vrd_punch|round(2) }} kPa</li>
-															<li class="list-group-item">D = {{ D_punch|round(2) }} m</li>
-														</ul>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<br>
-								<div class="text-center">
-									<h5>Vertical/Wide beam shear (d from column face)</h5>
-								</div>
-								<div class="container">
-									<div class="row justify-content-center">
-										<div class="col-md-12">
-											<div class="card bg-light p-2">
-												<div class="row">
-													<div class="col-md-6 pr-1">
-														<ul class="list-group">
-															<li class="list-group-item">d = {{ d_wide|round(2) }} m</li>
-															<li class="list-group-item">k = {{ k_wide|round(2) }}</li>
-															<li class="list-group-item">&#961; = {{ rho_final|round(4) }}</li>
-															<li class="list-group-item">As = {{ As_wide|round(2) }} m<sup>2</sup></li>
-															<li class="list-group-item">Ap = {{ Ap2_wide|round(2) }} m<sup>2</sup></li>
-														</ul>
-													</div>
-													<div class="col-md-6 pl-1">
-														<ul class="list-group">
-															<li class="list-group-item">v<sub>Rd,min</sub> = {{ vrd_min_wide|round(2) }} kPa</li>
-															<li class="list-group-item bg-success">v<sub>Ed</sub> = {{ ved_wide|round(2) }} kPa</li>
-															<li class="list-group-item bg-success">v<sub>Rd</sub> = {{ vrd_wide|round(2) }} kPa</li>
-															<li class="list-group-item">D = {{ D_wide|round(2) }} m</li>
-														</ul>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<br>
-								<h4>2.2 Bending Moment Failure</h4>
-								<div class="text-center">
-									<div class="jumbotron text-center font-weight-bold">
-										<h6>Action, M<sub>Ed</sub> ≤ Resistance, M<sub>Rd</sub></h6>
-									</div>
-									<div class="container">
-										<div class="row justify-content-center">
-											<div class="col-md-10">
-												<div class="card bg-light text-center p-3">
-													<p>M<sub>Ed</sub> = Max. moment at column face</p>
-													<p>M<sub>Rd</sub> = 0.87 * fyk * z * A<sub>s</sub></p>
-													<p>A<sub>s</sub> = max(A<sub>s</sub>, A<sub>s,min</sub>)</p>
-													<p>A<sub>s,min</sub> = &#961;<sub>min</sub> * B * d</p>
-													<p>A<sub>s</sub> = &#961; * B * d</p>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<br>
-								<div class="container">
-									<div class="row justify-content-center">
-										<div class="col-md-12">
-											<div class="card bg-light p-2">
-												<div class="row">
-													<div class="col-md-6 pr-1">
-														<ul class="list-group">
-															<li class="list-group-item">d = {{ d_final|round(2) }} m</li>
-															<li class="list-group-item">B = {{ B_final|round(2) }} m</li>
-															<li class="list-group-item">z = {{ z|round(2) }} m</li>
-															<li class="list-group-item">&#961;<sub>min</sub> = {{ rho_min|round(4) }}</li>
-															<li class="list-group-item">&#961; = {{ rho_final|round(4) }}</li>
-														</ul>
-													</div>
-													<div class="col-md-6 pl-1">
-														<ul class="list-group">
-															<li class="list-group-item">A<sub>s,min</sub> = {{ Asmin|round(2) }} mm<sup>2</sup></li>
-															<li class="list-group-item bg-success">M<sub>Ed</sub> = {{ med|round(2) }} kNm</li>
-															<li class="list-group-item bg-success">M<sub>Rd</sub> = {{ mrd|round(2) }} kNm</li>
-															<li class="list-group-item">A<sub>s</sub> = {{ As_old|round(2) }} mm<sup>2</sup></li>
-														</ul>
-													</div>
+												<div class="col-md-6 pl-1">
+													<ul class="list-group">
+														<li class="list-group-item">v<sub>Rd,min</sub> = {{
+															results.vrd_min_wide|round(2) }} kPa</li>
+														<li class="list-group-item bg-success">v<sub>Ed</sub> = {{
+															results.ved_wide|round(2) }} kPa</li>
+														<li class="list-group-item bg-success">v<sub>Rd</sub> = {{
+															results.vrd_wide|round(2) }} kPa</li>
+														<li class="list-group-item">D = {{ results.D_wide|round(2) }} m</li>
+													</ul>
 												</div>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-							<hr>
-							<hr>
-							<div>
-								<div class="jumbotron text-center">
-									<h1>3. Final Rounded Values</h1>
+							<br>
+							<h4>2.2 Bending Moment Failure</h4>
+							<div class="text-center">
+								<div class="jumbotron text-center font-weight-bold">
+									<h6>Action, M<sub>Ed</sub> ≤ Resistance, M<sub>Rd</sub></h6>
 								</div>
 								<div class="container">
 									<div class="row justify-content-center">
-										<div class="col-md-12">
-											<div class="card bg-light p-2">
-												<div class="row">
-													<div class="col-md-6 pr-1">
-														<ul class="list-group">
-															<li class="list-group-item bg-success">D = {{ d }} m</li>
-															<li class="list-group-item bg-success">B = {{ b }} m</li>
-														</ul>
-													</div>
-													<div class="col-md-6 pl-1">
-														<ul class="list-group">
-															<li class="list-group-item bg-success">N = {{ N }}</li>
-															<li class="list-group-item bg-success">s = {{ s }} mm</li>
-														</ul>
-													</div>
+										<div class="col-md-10">
+											<div class="card bg-light text-center p-3">
+												<p>M<sub>Ed</sub> = Max. moment at column face</p>
+												<p>M<sub>Rd</sub> = 0.87 * fyk * z * A<sub>s</sub></p>
+												<p>A<sub>s</sub> = max(A<sub>s</sub>, A<sub>s,min</sub>)</p>
+												<p>A<sub>s,min</sub> = &#961;<sub>min</sub> * B * d</p>
+												<p>A<sub>s</sub> = &#961; * B * d</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<br>
+							<div class="container">
+								<div class="row justify-content-center">
+									<div class="col-md-12">
+										<div class="card bg-light p-2">
+											<div class="row">
+												<div class="col-md-6 pr-1">
+													<ul class="list-group">
+														<li class="list-group-item">d = {{ results.d_final|round(2) }} m</li>
+														<li class="list-group-item">B = {{ results.B_final|round(2) }} m</li>
+														<li class="list-group-item">z = {{ results.z|round(2) }} m</li>
+														<li class="list-group-item">&#961;<sub>min</sub> = {{
+															results.rho_min|round(4) }}</li>
+														<li class="list-group-item">&#961; = {{ results.rho_final|round(4) }}
+														</li>
+													</ul>
+												</div>
+												<div class="col-md-6 pl-1">
+													<ul class="list-group">
+														<li class="list-group-item">A<sub>s,min</sub> = {{
+															results.Asmin|round(2) }} mm<sup>2</sup></li>
+														<li class="list-group-item bg-success">M<sub>Ed</sub> = {{
+															results.med|round(2) }} kNm</li>
+														<li class="list-group-item bg-success">M<sub>Rd</sub> = {{
+															results.mrd|round(2) }} kNm</li>
+														<li class="list-group-item">A<sub>s</sub> = {{ results.As_old|round(2)
+															}} mm<sup>2</sup></li>
+													</ul>
 												</div>
 											</div>
 										</div>
@@ -307,36 +330,66 @@
 								</div>
 							</div>
 						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+						<hr>
+						<hr>
+						<div>
+							<div class="jumbotron text-center">
+								<h1>3. Final Rounded Values</h1>
+							</div>
+							<div class="container">
+								<div class="row justify-content-center">
+									<div class="col-md-12">
+										<div class="card bg-light p-2">
+											<div class="row">
+												<div class="col-md-6 pr-1">
+													<ul class="list-group">
+														<li class="list-group-item bg-success">D = {{ results.d }} m</li>
+														<li class="list-group-item bg-success">B = {{ results.b }} m</li>
+													</ul>
+												</div>
+												<div class="col-md-6 pl-1">
+													<ul class="list-group">
+														<li class="list-group-item bg-success">N = {{ results.N }}</li>
+														<li class="list-group-item bg-success">s = {{ results.s }} mm</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 					</div>
 				</div>
 			</div>
+		</div>
 		{% endif %}
 	</div>
 	<hr>
 	<div class="col">
-		{% if b %}
+		{% if results.b %}
 		<div class="wrapper">
 			<h4 style="display: inline-block; margin-right: 10px;">Engineering Drawing</h4>
 			<h5 style="display: inline-block;">[Units - Millimeters (mm)]</h5>
 		</div>
-			<br>
-			<canvas id="myCanvas"></canvas>
-			<input type="hidden" id="b-value" value="{{ b }}">
-			<input type="hidden" id="d-value" value="{{ d }}">
-			<input type="hidden" id="N-value" value="{{ N }}">
-			<input type="hidden" id="s-value" value="{{ s }}">
-			<input type="hidden" id="bar-value" value="{{ bar }}">
-			<input type="hidden" id="col-value" value="{{ col }}">
-			<input type="hidden" id="col-valuey" value="{{ coly }}">
-			<input type="hidden" id="cov-value" value="{{ cov }}">
-			<script
-				type="text/javascript"
-				src="{{ url_for('static', filename='draw.js') }}"
-			></script>
+		<br>
+		<canvas id="myCanvas"></canvas>
+		<input type="hidden" id="b-value" value="{{ results.b }}">
+		<input type="hidden" id="d-value" value="{{ results.d }}">
+		<input type="hidden" id="N-value" value="{{ results.N }}">
+		<input type="hidden" id="s-value" value="{{ results.s }}">
+		<input type="hidden" id="bar-value" value="{{ inputs.bar }}">
+		<input type="hidden" id="col-value" value="{{ inputs.col }}">
+		<input type="hidden" id="col-valuey" value="{{ inputs.coly }}">
+		<input type="hidden" id="cov-value" value="{{ inputs.cov }}">
 		{% endif %}
 	</div>
 </div>
+{% endblock %}
+{% block javascript %}
+<script type="text/javascript" src="{{ url_for('static', filename='js/drawReport.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/draw.js') }}"></script>
 {% endblock %}

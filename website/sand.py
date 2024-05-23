@@ -176,12 +176,20 @@ def sand_iso(DL, LL, mxp, mxv, myp, myv, colx, coly, phi_f, Df, gamma, fck, fyk,
             B_f = math.ceil(B_final * 10) / 10
             s_a = ((B_f / (N - 1)) - phi - (cover_side * 2)) * 1000
             s_ini = math.floor(s_a / 10) * 10
-            D_f = round((math.ceil(D_final / 0.05) * 0.05), 2)
+            D_f = max((round((math.ceil(D_final / 0.05) * 0.05), 2)), 0.3)
             s = min(s_ini, 400, (3 * D_f * 1000))
             s_f = max(s, 20, phi)
-        return [B_f, D_f, As_f, N, s_f, q_all, FOS, q_ult, p_s, ex, ey, sig_p, D_wide, D_punch, ved_wide,\
+        results_list = [B_f, D_f, As_f, N, s_f, q_all, FOS, q_ult, p_s, ex, ey, sig_p, D_wide, D_punch, ved_wide,\
                 ved_punch, vrd, med, mrd, rho_min, SW_conc, SW_fill, B_final, D_final,\
                 d_final, sig_s, d_wide, d_punch, vrd_wide, vrd_punch, k_wide, vrd_min_wide,\
                 Ap2_wide, As_wide, k_punch, vrd_min_punch, Ap2_punch, As_punch, rho_final, z, As, Asmin, Nc, Nq, Ngamma]
+        results_dict = dict(zip([
+            'b', 'd', 'As', 'N', 's', 'qa', 'fs', 'qu', 'p_s', 'ex', 'ey', 'sig_p',
+            'D_wide', 'D_punch', 'ved_wide', 'ved_punch', 'vrd', 'med', 'mrd', 'rho_min', 'SW_conc',
+            'SW_fill', 'B_final', 'D_final', 'd_final', 'sig_s', 'd_wide', 'd_punch', 'vrd_wide',
+            'vrd_punch', 'k_wide', 'vrd_min_wide', 'Ap2_wide', 'As_wide', 'k_punch', 'vrd_min_punch',
+            'Ap2_punch', 'As_punch', 'rho_final', 'z', 'As_old', 'Asmin', 'Nc', 'Nq', 'Ngamma'
+        ], results_list))
+        return results_dict
     else:
-        return [0] * 45
+        return {}
