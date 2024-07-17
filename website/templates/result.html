@@ -9,6 +9,8 @@
 			Read FAQ - Acceptable inputs section for a range of acceptable values.</p>
 		{% endif %}
 		{% if results.b %}
+		{% if submit_type == "regular" %}
+		{% if results.b %}
 		<h4>Numerical</h4>
 		<p>Length of side, B (both sides) = {{ results.b }} m</p>
 		{% endif %}
@@ -21,7 +23,93 @@
 		{% if results.s %}
 		<p>Spacing between bars, S (both sides, bottom) = {{ results.s }} mm</p>
 		{% endif %}
-		{% if results.b %}
+		{% else %}
+		<div class="row">
+			<div class="col">
+				{% if inputs.dl %}
+				<h4>Inputs</h4>
+				<p>Permanent load (Unfactored), Gk = {{ inputs.dl }} kN</p>
+				{% endif %}
+				{% if inputs.ll %}
+				<p>Variable load (Unfactored), Qk = {{ inputs.ll }} kN</p>
+				{% endif %}
+				{% if inputs.mxp %}
+				<p>MomentX Permanent (Unfactored), Mxp = {{ inputs.mxp }} kNm</p>
+				{% endif %}
+				{% if inputs.mxv %}
+				<p>MomentX Variable (Unfactored), Mxv = {{ inputs.mxv }} kNm</p>
+				{% endif %}
+				{% if inputs.myp %}
+				<p>MomentY Permanent (Unfactored), Myp = {{ inputs.myp }} kNm</p>
+				{% endif %}
+				{% if inputs.myv %}
+				<p>MomentY Variable (Unfactored), Myv = {{ inputs.myv }} kNm</p>
+				{% endif %}
+				{% if inputs.col %}
+				<p>Column widthX = {{ inputs.col }} m</p>
+				{% endif %}
+				{% if inputs.coly %}
+				<p>Column widthY = {{ inputs.coly }} m</p>
+				{% endif %}
+				{% if inputs.cu %}
+				<p>Undrained cohesion, cu = {{ inputs.cu }} kPa</p>
+				{% endif %}
+				{% if inputs.phi %}
+				<p>Angle of friction of soil, &phi; = {{ inputs.phi }}&deg;</p>
+				{% endif %}
+				{% if inputs.bc %}
+				<p>Allowable bearing capacity of soil, qall = {{ inputs.bc }} kPa</p>
+				{% endif %}
+				{% if inputs.df %}
+				<p>Depth of foundation, Df = {{ inputs.df }} m</p>
+				{% endif %}
+				{% if inputs.gam %}
+				<p>Unit weight of soil, &gamma; = {{ inputs.gam }} kN/m<sup>3</sup></p>
+				{% endif %}
+				{% if inputs.fck %}
+				<p>Concrete strength, fck = {{ inputs.fck }} MPa</p>
+				{% endif %}
+				{% if inputs.fyk %}
+				<p>Steel strength, fyk = {{ inputs.fyk }} MPa</p>
+				{% endif %}
+			</div>
+			<div class="col">
+				{% if inputs.bar %}
+				<p>Re-Bar diameter = {{ inputs.bar }} mm</p>
+				{% endif %}
+				{% if inputs.cov %}
+				<p>Cover = {{ inputs.cov }} mm</p>
+				{% endif %}
+				<h4>Outputs</h4>
+				{% if results.b %}
+				<p>Length of side, B (both sides) = {{ results.b }} m</p>
+				{% endif %}
+				{% if results.d %}
+				<p>Thickness, D = {{ results.d }} m</p>
+				{% endif %}
+				{% if results.N %}
+				<p>Number of bars, N (both sides, bottom) = {{ results.N }}</p>
+				{% endif %}
+				{% if results.s %}
+				<p>Spacing between bars, S (both sides, bottom) = {{ results.s }} mm</p>
+				{% endif %}
+				<br>
+				<h4>Additional Outputs</h4>
+				{% if results.As %}
+				<p>Reinforcement area, As (both sides, bottom) = {{ results.As }} mm<sup>2</sup></p>
+				{% endif %}
+				{% if results.qu %}
+				<p>Ultimate bearing capacity, qult = {{ results.qu }} kPa</p>
+				{% endif %}
+				{% if results.fs %}
+				<p>Factor of safety, FS = {{ results.fs }}</p>
+				{% endif %}
+				{% if results.qa %}
+				<p>Allowable bearing capacity, qall = {{ results.qa }} kPa</p>
+				{% endif %}
+			</div>
+		</div>
+		{% endif %}
 		<div class="d-flex justify-content-center">
 			<button id="open-window-button" type="button" class="btn btn-info" data-bs-toggle="modal"
 				data-bs-target="#windowModal">Generate Design Report</button>
@@ -139,12 +227,14 @@
 											{% endif %}
 											{% if inputs.phi %}
 											<li class="list-group-item">φ = {{ inputs.phi|round(2) }}&deg;</li>
-											<li class="list-group-item">φ_r = {{ (inputs.phi * 3.14159 / 180)|round(2) }}</li>
+											<li class="list-group-item">φ_r = {{ (inputs.phi * 3.14159 / 180)|round(2)
+												}}</li>
 											<li class="list-group-item">Nq = {{ results.Nq|round(2) }}</li>
 											<li class="list-group-item">N&#947; = {{ results.Ngamma|round(2) }}</li>
 											{% endif %}
 											{% if results.qa %}
-											<li class="list-group-item">&#947; = {{ inputs.gam|round(2) }} kN/m<sup>3</sup>
+											<li class="list-group-item">&#947; = {{ inputs.gam|round(2) }}
+												kN/m<sup>3</sup>
 											</li>
 											<li class="list-group-item">Df = {{ inputs.df|round(2) }} m</li>
 											<li class="list-group-item">qu = {{ results.qu|round(2) }} kPa</li>
@@ -153,10 +243,12 @@
 											<li class="list-group-item bg-success">&sigma;<sub>max</sub> = {{
 												results.sig_p|round(2) }} kPa</li>
 											{% if inputs.bc %}
-											<li class="list-group-item bg-success">qall = {{ inputs.bc|round(2) }} kPa</li>
+											<li class="list-group-item bg-success">qall = {{ inputs.bc|round(2) }} kPa
+											</li>
 											{% endif %}
 											{% if results.qa %}
-											<li class="list-group-item bg-success">qall = {{ results.qa|round(2) }} kPa</li>
+											<li class="list-group-item bg-success">qall = {{ results.qa|round(2) }} kPa
+											</li>
 											{% endif %}
 										</div>
 									</div>
@@ -173,7 +265,8 @@
 								<div class="col-md-8">
 									<div class="card bg-light p-2">
 										<div class="list-group">
-											<li class="list-group-item">P = 1.35Gk + 1.5Qk = {{ results.p_s|round(2) }} kN</li>
+											<li class="list-group-item">P = 1.35Gk + 1.5Qk = {{ results.p_s|round(2) }}
+												kN</li>
 											<li class="list-group-item">&sigma; = {{ results.sig_s|round(2) }} kPa</li>
 											<li class="list-group-item">fck = {{ inputs.fck }} MPa</li>
 											<li class="list-group-item">fyk = {{ inputs.fyk }} MPa</li>
@@ -212,13 +305,17 @@
 											<div class="row">
 												<div class="col-md-6 pr-1">
 													<ul class="list-group">
-														<li class="list-group-item">d = {{ results.d_punch|round(2) }} m</li>
-														<li class="list-group-item">k = {{ results.k_punch|round(2) }}</li>
-														<li class="list-group-item">&#961; = {{ results.rho_final|round(4) }}
+														<li class="list-group-item">d = {{ results.d_punch|round(2) }} m
+														</li>
+														<li class="list-group-item">k = {{ results.k_punch|round(2) }}
+														</li>
+														<li class="list-group-item">&#961; = {{
+															results.rho_final|round(4) }}
 														</li>
 														<li class="list-group-item">As = {{ results.As_punch|round(2) }}
 															m<sup>2</sup></li>
-														<li class="list-group-item">Ap = {{ results.Ap2_punch|round(2) }}
+														<li class="list-group-item">Ap = {{ results.Ap2_punch|round(2)
+															}}
 															m<sup>2</sup></li>
 													</ul>
 												</div>
@@ -230,7 +327,8 @@
 															results.ved_punch|round(2) }} kPa</li>
 														<li class="list-group-item bg-success">v<sub>Rd</sub> = {{
 															results.vrd_punch|round(2) }} kPa</li>
-														<li class="list-group-item">D = {{ results.D_punch|round(2) }} m</li>
+														<li class="list-group-item">D = {{ results.D_punch|round(2) }} m
+														</li>
 													</ul>
 												</div>
 											</div>
@@ -249,9 +347,12 @@
 											<div class="row">
 												<div class="col-md-6 pr-1">
 													<ul class="list-group">
-														<li class="list-group-item">d = {{ results.d_wide|round(2) }} m</li>
-														<li class="list-group-item">k = {{ results.k_wide|round(2) }}</li>
-														<li class="list-group-item">&#961; = {{ results.rho_final|round(4) }}
+														<li class="list-group-item">d = {{ results.d_wide|round(2) }} m
+														</li>
+														<li class="list-group-item">k = {{ results.k_wide|round(2) }}
+														</li>
+														<li class="list-group-item">&#961; = {{
+															results.rho_final|round(4) }}
 														</li>
 														<li class="list-group-item">As = {{ results.As_wide|round(2) }}
 															m<sup>2</sup></li>
@@ -267,7 +368,8 @@
 															results.ved_wide|round(2) }} kPa</li>
 														<li class="list-group-item bg-success">v<sub>Rd</sub> = {{
 															results.vrd_wide|round(2) }} kPa</li>
-														<li class="list-group-item">D = {{ results.D_wide|round(2) }} m</li>
+														<li class="list-group-item">D = {{ results.D_wide|round(2) }} m
+														</li>
 													</ul>
 												</div>
 											</div>
@@ -303,12 +405,15 @@
 											<div class="row">
 												<div class="col-md-6 pr-1">
 													<ul class="list-group">
-														<li class="list-group-item">d = {{ results.d_final|round(2) }} m</li>
-														<li class="list-group-item">B = {{ results.B_final|round(2) }} m</li>
+														<li class="list-group-item">d = {{ results.d_final|round(2) }} m
+														</li>
+														<li class="list-group-item">B = {{ results.B_final|round(2) }} m
+														</li>
 														<li class="list-group-item">z = {{ results.z|round(2) }} m</li>
 														<li class="list-group-item">&#961;<sub>min</sub> = {{
 															results.rho_min|round(4) }}</li>
-														<li class="list-group-item">&#961; = {{ results.rho_final|round(4) }}
+														<li class="list-group-item">&#961; = {{
+															results.rho_final|round(4) }}
 														</li>
 													</ul>
 												</div>
@@ -320,7 +425,8 @@
 															results.med|round(2) }} kNm</li>
 														<li class="list-group-item bg-success">M<sub>Rd</sub> = {{
 															results.mrd|round(2) }} kNm</li>
-														<li class="list-group-item">A<sub>s</sub> = {{ results.As_old|round(2)
+														<li class="list-group-item">A<sub>s</sub> = {{
+															results.As_old|round(2)
 															}} mm<sup>2</sup></li>
 													</ul>
 												</div>
@@ -343,14 +449,17 @@
 											<div class="row">
 												<div class="col-md-6 pr-1">
 													<ul class="list-group">
-														<li class="list-group-item bg-success">D = {{ results.d }} m</li>
-														<li class="list-group-item bg-success">B = {{ results.b }} m</li>
+														<li class="list-group-item bg-success">D = {{ results.d }} m
+														</li>
+														<li class="list-group-item bg-success">B = {{ results.b }} m
+														</li>
 													</ul>
 												</div>
 												<div class="col-md-6 pl-1">
 													<ul class="list-group">
 														<li class="list-group-item bg-success">N = {{ results.N }}</li>
-														<li class="list-group-item bg-success">s = {{ results.s }} mm</li>
+														<li class="list-group-item bg-success">s = {{ results.s }} mm
+														</li>
 													</ul>
 												</div>
 											</div>
@@ -368,9 +477,9 @@
 		</div>
 		{% endif %}
 	</div>
+	{% if results.b %}
 	<hr>
 	<div class="col">
-		{% if results.b %}
 		<div class="wrapper">
 			<h4 style="display: inline-block; margin-right: 10px;">Engineering Drawing</h4>
 			<h5 style="display: inline-block;">[Units - Millimeters (mm)]</h5>
@@ -385,8 +494,8 @@
 		<input type="hidden" id="col-value" value="{{ inputs.col }}">
 		<input type="hidden" id="col-valuey" value="{{ inputs.coly }}">
 		<input type="hidden" id="cov-value" value="{{ inputs.cov }}">
-		{% endif %}
 	</div>
+	{% endif %}
 </div>
 {% endblock %}
 {% block javascript %}
