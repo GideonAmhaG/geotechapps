@@ -7,6 +7,11 @@ Tired of dealing with complex software for your foundation designs? Our web-base
 ![Logo](https://github.com/GideonAmhaG/portfolio_project/blob/main/logorot.png)
 
 
+## Live Demo
+
+Check out the live demo of geotechapps [here](https://geotechapps.phaedrusstudios.com/).
+
+
 ## Features
 
 - **JavaScript-Driven Engineering Drawings:**
