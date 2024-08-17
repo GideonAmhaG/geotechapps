@@ -81,8 +81,6 @@ Tired of dealing with complex software for your foundation designs? Our web-base
 6. **Access the Application:**
    - Use the HTTPS address displayed in your terminal to access the application in your web browser.
 
----
-    
 
 ## Usage/Examples
 
