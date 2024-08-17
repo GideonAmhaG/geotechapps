@@ -36,12 +36,54 @@ Tired of dealing with complex software for your foundation designs? Our web-base
 
 ## Installation
 
-On Linux, run main.py. Then, use the https address you get (localhost) on your web browser. Install all dependencies as needed.
+1. **Review License:**
+   - Before proceeding, please read the License section to understand the terms of use.
 
-```bash
-  python3 main.py 
-```
+2. **Clone the Repository:**
+   - Clone this repository to your local machine using Git:
+     ```bash
+     git clone https://github.com/GideonAmhaG/geotechapps
+     ```
+   - Navigate into the project directory:
+     ```bash
+     cd geotechapps
+     ```
+
+3. **Set Up the Environment:**
+   - Ensure you have Python 3 installed. You can download it from [python.org](https://www.python.org/).
+   - Create a virtual environment (optional but recommended):
+     ```bash
+     python3 -m venv venv
+     ```
+   - Activate the virtual environment:
+     - On macOS/Linux:
+       ```bash
+       source venv/bin/activate
+       ```
+     - On Windows:
+       ```bash
+       venv\Scripts\activate
+       ```
+
+4. **Install Dependencies:**
+   - Install the required Python packages listed in `requirements.txt`:
+     ```bash
+     pip install -r requirements.txt
+     ```
+
+5. **Run the Application:**
+   - Start the application by running `main.py`:
+     ```bash
+     python3 main.py
+     ```
+   - Open your web browser and go to the address provided in the terminal (typically `http://localhost:5000` or similar).
+
+6. **Access the Application:**
+   - Use the HTTPS address displayed in your terminal to access the application in your web browser.
+
+---
     
+
 ## Usage/Examples
 
 Choose foundation type -> choose soil type -> insert proper inputs (read FAQ page) -> press calculate-regular or calculate-advanced. 
@@ -50,8 +92,6 @@ Choose foundation type -> choose soil type -> insert proper inputs (read FAQ pag
 ## Contributing
 
 This code is proprietary and cannot be used without my permission.
-
-
 
 
 ## Related
@@ -63,6 +103,10 @@ Here are some related projects
 [printf](https://github.com/GideonAmhaG/printf)
 [monty_G](https://github.com/GideonAmhaG/monty_G)
 
+
+## Authors
+
+Gideon Amha Gebremedhin - [Github](https://github.com/GideonAmhaG) | [X](https://x.com/GideonAmha)
 
 
 ## License
