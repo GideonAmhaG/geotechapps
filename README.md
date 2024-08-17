@@ -1,5 +1,5 @@
 
-# geotechapps.com
+# geotechapps
 
 Tired of dealing with complex software for your foundation designs? Our web-based geotechnical design tool is here to simplify the process, empowering you to create the perfect foundation for your projects with ease. Whether you're dealing with specific soil conditions, load requirements, or other critical specifications, our intuitive platform guides you through the entire design process. Generate accurate engineering drawings and detailed design reports that comply with industry standards. Build with confidence and bring your vision to life, all from the comfort of your browser.
 
