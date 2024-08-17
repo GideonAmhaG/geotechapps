@@ -1,11 +1,7 @@
 
 # geotechapps.com
 
-Building foundations are the backbone of any structure. That’s why I created a web tool that designs building foundations for geotechnical engineers. The tool was developed by I alone and it took me about 1 month to complete. The focus of this project was to make geotechnical engineering lives automated. With this tool, you can easily design building foundations with just a few clicks. It’s easy to use and saves time.
-[Website](https://geotechapps.com/)
-[Blog](https://geotechappsgideon.blogspot.com/2023/07/how-i-made-my-first-software-civil.html)
-[LinkedIn](https://www.linkedin.com/in/gideon-amha-g/)
-
+Tired of dealing with complex software for your foundation designs? Our web-based geotechnical design tool is here to simplify the process, empowering you to create the perfect foundation for your projects with ease. Whether you're dealing with specific soil conditions, load requirements, or other critical specifications, our intuitive platform guides you through the entire design process. Generate accurate engineering drawings and detailed design reports that comply with industry standards. Build with confidence and bring your vision to life, all from the comfort of your browser.
 
 
 ![Logo](https://github.com/GideonAmhaG/portfolio_project/blob/main/logorot.png)
