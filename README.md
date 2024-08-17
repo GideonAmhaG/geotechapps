@@ -17,7 +17,7 @@ On Linux, run main.py. Then, use the https address you get (localhost) on your w
     
 ## Usage/Examples
 
-Choose foundation type -> choose soil type -> insert proper inputs (read FAQ page) -> press calculate-regular or calculate-advanced. To use calculate-advanced, you need to log in.
+Choose foundation type -> choose soil type -> insert proper inputs (read FAQ page) -> press calculate-regular or calculate-advanced. 
 
 
 ## Contributing
