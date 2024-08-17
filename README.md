@@ -84,7 +84,7 @@ Tired of dealing with complex software for your foundation designs? Our web-base
 
 ## Usage/Examples
 
-Choose foundation type -> choose soil type -> insert proper inputs (read FAQ page) -> press calculate-regular or calculate-advanced. 
+Press "Start Designing" -> choose foundation type -> choose soil type -> insert proper inputs (read FAQ page) -> press calculate-regular or calculate-advanced -> view generated engineering drawing -> press "Generate Design Report" to see all calculations, assumptions, and methodologies used. 
 
 
 ## Contributing
