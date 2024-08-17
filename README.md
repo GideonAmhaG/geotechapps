@@ -7,6 +7,33 @@ Tired of dealing with complex software for your foundation designs? Our web-base
 ![Logo](https://github.com/GideonAmhaG/portfolio_project/blob/main/logorot.png)
 
 
+## Features
+
+- **JavaScript-Driven Engineering Drawings:**
+  - Utilizes JavaScript to dynamically generate precise engineering drawings based on user inputs, including load conditions and soil properties.
+  - Supports interactive visualization, allowing users to adjust parameters and instantly see the impact on the foundation design.
+
+- **Python & Flask Backend:**
+  - Powered by Flask, a lightweight and flexible Python web framework, ensuring fast and scalable backend operations.
+  - Manages complex calculations for foundation design, utilizing Python's extensive math libraries to process geotechnical data efficiently.
+
+- **SQLite3 Database Integration:**
+  - Employs SQLite3 for database management, chosen for its simplicity and ease of integration with Python via the `sqlite3` module.
+  - Stores and retrieves user inputs and design results, ensuring data persistence across sessions.
+
+- **Responsive Front-End Design with Bootstrap:**
+  - Developed using HTML and Bootstrap to provide a clean, responsive user interface.
+  - Ensures compatibility across devices and browsers, allowing users to access the tool from desktops, tablets, and smartphones.
+
+- **Comprehensive Design Reporting:**
+  - Generates detailed design reports that include all calculations, assumptions, and methodologies used.
+  - Reports are visible in a user-friendly format, providing full transparency and traceability for engineering review and approval.
+
+- **Managed Hosting Deployment:**
+  - Hosted on a managed platform, offering robust security, scalability, and uptime without the overhead of server management.
+  - Ensures consistent performance and availability, allowing users to access the web tool reliably from any location.
+
+
 ## Installation
 
 On Linux, run main.py. Then, use the https address you get (localhost) on your web browser. Install all dependencies as needed.
