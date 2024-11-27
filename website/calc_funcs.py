@@ -109,7 +109,7 @@ def sig_prop(B, D, col, DL, LL, mxp, mxv, myp, myv, soil_type, Df=None, phi_f=No
     sig_p = (p_p / (B * B)) * (1 + ((6 * ex) / B) + ((6 * ey) / B))
     FS = 3
     if soil_type == "clay":
-        qu = (1.3 * cu * 5.7) + (gamma * Df)
+        qu = (1.3 * cu * 5.14) + (gamma * Df)
         qa = qu / FS
         return sig_p, qa, ex, ey, SW_conc, SW_fill
     elif soil_type == "sand":
